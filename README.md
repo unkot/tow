@@ -22,8 +22,8 @@ Architecture
                           |
                            -----[Worker node]
 
-LoadBalancer - any free software load balancer, e.g. HAProxy.
-API node - Ruby backend on top of Sinatra.
-Message Bus - RabbitMQ.
-Worker node - simple process to do a job written in Ruby.
+* LoadBalancer - any free software load balancer, e.g. HAProxy.
+* API node - Ruby backend on top of Sinatra.
+* Message Bus - RabbitMQ.
+* Worker node - simple process to do a job written in Ruby.
 
