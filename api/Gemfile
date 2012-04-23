@@ -1,0 +1,7 @@
+source :rubygems
+gem "sinatra"
+gem "thin"
+gem "amqp", "~> 0.9.0"
+gem "redis"
+gem "uuidtools"
+gem "json"
