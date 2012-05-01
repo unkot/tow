@@ -1,0 +1,23 @@
+SERVICE_TOKEN=nova
+ADMIN_PASSWORD=nova
+GUEST_PASSWORD=nova
+ENABLED_SERVICES=<%= @ENABLED_SERVICES %>
+ROOTSLEEP=3
+PUBLIC_INTERFACE=eth0
+VLAN_INTERFACE=eth1
+NET_MAN=VlanManager
+MULTI_HOST=False
+GLANCE_HOSTPORT="127.0.0.1:9292,10.100.0.102:9292,10.100.0.102:9292"
+MYSQL_HOST=<%= @MYSQL_HOST %>
+MYSQL_USER=<%= @MYSQL_USER %>
+MYSQL_PASSWORD=<%= @MYSQL_PASSWORD %>
+RABBIT_HOST=<%= @RABBIT_HOST %>
+RABBIT_PASSWORD=<%= @RABBIT_PASSWORD %>
+LIBVIRT_TYPE=<%= @LIBVIRT_TYPE %>
+<% @REPOS.each do |key, value| -%>
+<%= key %>_REPO="<%= value %>"
+<% end -%>
+<% @BRANCHES.each do |key, value| -%>
+<%= key %>_BRANCH="<%= value %>"
+<% end -%>
+LOGFILE='/opt/stack/devstack.log'
