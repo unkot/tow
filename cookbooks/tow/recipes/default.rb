@@ -11,5 +11,8 @@ when "ubuntu", "debian"
     end
 end
 
-include_recipe "wheel::stack"
+include_recipe "wheel::rabbitmq"
+include_recipe "wheel::cassandra"
+include_recipe "wheel::api"
+include_recipe "wheel::worker"
 
