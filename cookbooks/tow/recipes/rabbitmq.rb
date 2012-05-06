@@ -8,12 +8,12 @@ package "rabbitmq-server" do
 end
 
 execute "download rabbitmq-server" do
-    command "wget http://www.rabbitmq.com/releases/rabbitmq-server/v2.7.1/rabbitmq-server_2.7.1-1_all.deb"
+    command "wget http://www.rabbitmq.com/releases/rabbitmq-server/v2.8.2/rabbitmq-server_2.8.2-1_all.deb" 
     cwd "/tmp"
 end
 
 execute "install rabbitmq-server" do
-    command "dpkg -i rabbitmq-server_2.7.1-1_all.deb"
+    command "dpkg -i rabbitmq-server_2.8.2-1_all.deb"
     cwd "/tmp"
 end
 
