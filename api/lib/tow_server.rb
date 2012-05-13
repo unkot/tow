@@ -7,8 +7,15 @@
 # Contains API calls bindings
 
 require "rubygems"
+require "bundler/setup"
 require "sinatra"
 require "cassandra"
+require "tow_server/job"
+require "tow_server/process_email_job"
+require "tow_server/job_results"
+
+set :port, 8080
+
 
 get '/' do
   'Tow API server version 0.1'

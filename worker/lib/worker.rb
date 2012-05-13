@@ -6,6 +6,8 @@
 #
 # Generic worker
 
+require "rubygems"
+require "bundler/setup"
 require "amqp"
 require "cassandra"
 

@@ -4,6 +4,8 @@
 #
 
 package "python-software-properties"
+package "java6-runtime"
+package "openjdk-7-jdk"
 
 execute "add cassandra ubuntu repository" do
     command "add-apt-repository 'deb http://www.apache.org/dist/cassandra/debian unstable main'"

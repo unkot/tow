@@ -3,8 +3,9 @@ API server for tow
 
 Installation steps
 ------------------
-# gem install bundler
-# bundle install
+    sudo gem install bundler
+    bundle install
+    sudo ruby lib/tow_server.rb
 
 Typical folder structure
 ------------------------
