@@ -38,7 +38,7 @@ class Job
   end
   def status=(status)
     available_statuses = %w(new assigned completed error abandoned)
-    raise ArgumentError, "Status #{status} not in #{available_statuses}", caller unless available_statuses.include? status
+    raise ArgumentError, "Status #{status} not in #{available_statuses}", caller if available_statuses.include? status
 
     @timestamp = nil
     @status = status
