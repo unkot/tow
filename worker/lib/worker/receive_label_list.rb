@@ -7,4 +7,7 @@
 # Retrieves Label List
 
 class ReceiveLabelList
+  def do
+
+  end
 end
