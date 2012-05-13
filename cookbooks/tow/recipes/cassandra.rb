@@ -3,10 +3,6 @@
 # Recipe:: cassandra
 #
 
-package "rabbitmq-server" do
-    action :install
-end
-
 execute "add cassandra ubuntu repository" do
     command "add-apt-repository 'deb http://www.apache.org/dist/cassandra/debian unstable main'"
 end
