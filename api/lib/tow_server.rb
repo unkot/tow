@@ -23,14 +23,20 @@ post '/authenticate' do
 end
 
 get '/results' do
-  user = "ivan"
-  password = "petrov"
+  user = params[:user]
+  password = params[:password]
   key = params['key']
+  result = JobResults.receive(:job_key => key)
+  unless result
+    "{'job': '#{job.key}', 'status': 'scheduled'}"
+  else
+    return result
+  end
 end
 
 get '/labels' do
-  user = "ivan"
-  password = "petrov"
+  user = params[:user]
+  password = params[:password]
   job_type = "label_list"
   job = Job.new(:job_type => job_type, :user => user, :password => password)
   SubmitJob.submit(job)

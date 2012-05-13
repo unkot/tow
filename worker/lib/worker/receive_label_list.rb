@@ -7,7 +7,15 @@
 # Retrieves Label List
 
 class ReceiveLabelList
-  def do
-
+  def run(job)
+    labels = Array.new
+    user = job[:user]
+    password = job[:password]
+    Gmail.new(user, password) do |gmail|
+      gmail.labels.each do |label|
+        labels << label
+      end
+    end
+    labels
   end
 end

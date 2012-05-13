@@ -17,16 +17,19 @@ class SubmitJob
 
     c.insert(JOBS_COLUMN_FAMILY, job_spec.key, job_spec.to_hash)
 
-    EventMachine.run do
-      connection = AMQP.connect(:host => '127.0.0.1')
-      puts "Connected to AMQP broker. Running #{AMQP::VERSION} version of the gem..."
+    AMQP.start(:host => "localhost") do |connection|
+      channel = AMQP::Channel.new(connection)
+      queue   = channel.queue(LABEL_LIST_QUEUE, :durable => true)
+      message = job_spec.key
 
-      channel  = AMQP::Channel.new(connection)
-      queue    = channel.queue(LABEL_LIST_QUEUE, :auto_delete => true)
-      exchange = channel.direct("")
+      AMQP::Exchange.default.publish(message, :routing_key => queue.name, :persistent => true)
+      puts "Submitted job #{message}"
 
-      exchange.publish job_spec.key, :routing_key => queue.name
-      connection.close { EventMachine.stop }
+      EM.add_timer(0.5) do
+        connection.close do
+          EM.stop { exit }
+        end
+      end
     end
   end
 end

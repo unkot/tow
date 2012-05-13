@@ -67,6 +67,13 @@ class Job
     @timestamp = timestamp
   end
 
+  def result
+    @result
+  end
+  def result=(result)
+    @result = result
+  end
+
   def to_s
     "get #{job_type} for #{user} in #{status} since #{timestamp}"
   end
