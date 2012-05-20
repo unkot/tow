@@ -1,0 +1,19 @@
+<%# coding: UTF-8 %>
+{
+	"labels" : [
+		<%for label in labels%>
+		{
+			"name" : "<%= label %>",
+			"path" : "<%= label.upcase %>",
+			"backgroundColor" : "FF449922",
+			"textColor" : "FFEEFFAA"
+		},
+		<% end %>
+		{
+			"name" : "Later",
+			"path" : "LATER",
+			"backgroundColor" : "FF992255",
+			"textColor" : "FFEEFFFF"
+		}
+	]
+}
