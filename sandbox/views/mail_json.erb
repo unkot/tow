@@ -1,0 +1,12 @@
+{
+	"mail" : [
+		<%mail.each_index do |letter,index|%>
+		{
+			"name" : "<%= label %>",
+			"path" : "<%= label.upcase %>",
+			"backgroundColor" : "FF449922",
+			"textColor" : "FFEEFFAA"
+		}<% if index < mail.length - 1  %>,<% end %>
+		<% end %>
+	]
+}
