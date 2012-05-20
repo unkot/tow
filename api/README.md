@@ -3,9 +3,14 @@ API server for tow
 
 Installation steps
 ------------------
+If you want, you can manually install worker. However it is strongly recommended to use vagrant+chef environment.
+
     sudo gem install bundler
+    cd ../
     bundle install
-    sudo ruby lib/tow_server.rb
+    cd -
+    cd lib
+    ruby tow_server.rb
 
 Typical folder structure
 ------------------------
