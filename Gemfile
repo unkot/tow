@@ -1,7 +1,10 @@
 source :rubygems
+gem "thrift_client", "= 0.7.0"
 gem "sinatra"
 gem "thin"
 gem "amqp", "~> 0.9.0"
 gem "cassandra"
 gem "uuidtools"
 gem "json"
+gem "ruby-gmail"
+gem "openssl-extensions"

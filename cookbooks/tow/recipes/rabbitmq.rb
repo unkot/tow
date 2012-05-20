@@ -3,7 +3,10 @@
 # Recipe:: rabbitmq
 #
 
-package "rabbitmq-server" do
+execute "apt-get update" do
+end
+
+package "erlang-nox" do
     action :install
 end
 
@@ -50,7 +53,7 @@ execute "rabbitmq start_app" do
 end
 
 execute "rabbitmq change_password" do
-    command "rabbitmqctl change_password guest #{node[:stack][:rabbit][:password]}"
+    command "rabbitmqctl change_password guest #{node[:tow][:rabbitmq][:password]}"
 end
 #todo: use search
 #execute "add os-main to hosts" do

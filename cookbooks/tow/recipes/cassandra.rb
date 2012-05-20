@@ -3,14 +3,12 @@
 # Recipe:: cassandra
 #
 
-package "python-software-properties"
+package "openjdk-7-jdk"
 
-execute "add cassandra ubuntu repository" do
-    command "add-apt-repository 'deb http://www.apache.org/dist/cassandra/debian unstable main'"
-end
-
-bash "installing cassandra public keys" do
+bash "installing cassandra repos and public keys" do
     code <<-EOM
+    echo deb http://www.apache.org/dist/cassandra/debian/ 11x main >> /etc/apt/sources.list
+    echo deb-src http://www.apache.org/dist/cassandra/debian/ 11x main >> /etc/apt/sources.list
     #This simply means you need to add the PUBLIC_KEY. You do that like this:
     gpg --keyserver pgp.mit.edu --recv-keys F758CE318D77295D
     gpg --export --armor F758CE318D77295D | sudo apt-key add -
@@ -21,7 +19,7 @@ bash "installing cassandra public keys" do
 end
 
 execute "install cassandra" do
-    command "apt-get update && apt-get install cassandra"
+    command "apt-get update && apt-get install -y cassandra"
 end
 
 execute "starting cassandra" do

@@ -1,3 +1,0 @@
-source :rubygems
-gem "ruby-gmail"
-gem "openssl-extensions"

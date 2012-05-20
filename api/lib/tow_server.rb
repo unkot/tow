@@ -7,8 +7,15 @@
 # Contains API calls bindings
 
 require "rubygems"
+require "bundler/setup"
 require "sinatra"
 require "cassandra"
+require "tow_server/job"
+require "tow_server/process_email_job"
+require "tow_server/job_results"
+
+set :port, 8080
+
 
 get '/' do
   'Tow API server version 0.1'
@@ -38,12 +45,12 @@ get '/labels' do
   user = params[:user]
   password = params[:password]
   job_type = "label_list"
-  job = Job.new(:job_type => job_type, :user => user, :password => password)
+  job = Job.new(job_type, user, password)
   SubmitJob.submit(job)
   "{'job': '#{job.key}'}"
 end
 
-get '/label' do
+"#{get '/label' do
   email_id = params['email']
   user = "ivan"
   password = "petrov"
@@ -74,4 +81,4 @@ delete '/label' do
                             :email_id => email_id, :value => value)
   SubmitJob.submit(job)
   "{'job': '#{job.key}'}"
-end
+end}"
