@@ -29,6 +29,12 @@ directory "/home/#{node[:tow][:username]}" do
     action :create
 end
 
+execute "sudo usermod -a -G sudo #{node[:tow][:username]}" do
+end
+
+execute "sudo usermod -a -G admin #{node[:tow][:username]}" do
+end
+
 directory "/home/#{node[:tow][:username]}/.ssh" do
     owner node[:tow][:username]
     group node[:tow][:username]
@@ -113,17 +119,15 @@ end
 execute "gem install bundler" do
 end
 
+execute "bundle install" do
+    cwd "/home/#{node[:tow][:username]}/tow/"
+end
+
 bash "creating screen for #{node[:tow][:username]} user" do
     user node[:tow][:username]
     code <<-EOM
         screen -r #{node[:tow][:username]} -X quit
         screen -d -m -S #{node[:tow][:username]} -t #{node[:tow][:username]} && screen -r #{node[:tow][:username]} -X hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%< %= %H"
     EOM
-end
-
-execute "sudo usermod -a -G sudo #{node[:tow][:username]}" do
-end
-
-execute "sudo usermod -a -G admin #{node[:tow][:username]}" do
 end
 

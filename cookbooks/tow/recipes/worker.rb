@@ -9,10 +9,6 @@ include_recipe "tow::prerequisites"
 
 Chef::Log.info("====== Installing tow worker node =====")
 
-execute "bundle install worker" do
-    cwd "/home/#{node[:tow][:username]}/tow/worker/"
-end
-
 screen_it(node[:tow][:username], "api", "cd /home/#{node[:tow][:username]}/tow/worker/lib && ruby worker.rb")
 
 #template "/home/#{node[:wheel][:username]}/tow/etc/api.cfg" do

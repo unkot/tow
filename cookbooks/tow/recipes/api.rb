@@ -9,10 +9,6 @@ include_recipe "tow::prerequisites"
 
 Chef::Log.info("====== Installing tow api node =====")
 
-execute "bundle install api" do
-    cwd "/home/#{node[:tow][:username]}/tow/api/"
-end
-
 screen_it(node[:tow][:username], "api", "cd /home/#{node[:tow][:username]}/tow/api/lib && ruby tow_server.rb")
 
 #template "/home/#{node[:wheel][:username]}/tow/etc/api.cfg" do
