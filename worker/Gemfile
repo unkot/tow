@@ -1,3 +1,6 @@
 source :rubygems
+gem "thrift_client", "= 0.7.0"
+gem "amqp"
+gem "cassandra"
 gem "ruby-gmail"
 gem "openssl-extensions"
