@@ -9,9 +9,11 @@ Installation instructions
 1. [install vagrant](http://downloads.vagrantup.com/)
 
 2. add vagrant box
+
     vagrant box add precise64 http://files.vagrantup.com/precise64.box
 
 3. run tow
+
     vagrant up
     ssh tow@localhost -p 2232
     screen -r
