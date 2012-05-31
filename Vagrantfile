@@ -6,7 +6,8 @@ Vagrant::Config.run do |config|
         towall.vm.network :hostonly, "10.100.0.101", :netmask => "255.255.0.0"
         towall.vm.host_name = "tow-all"
         towall.vm.box = "precise64"
-        towall.vm.forward_port 22, 2232
+        towall.vm.box_url = "http://files.vagrantup.com/precise64.box"
+	towall.vm.forward_port 22, 2232
         towall.vm.forward_port 80, 8081
         towall.vm.forward_port 8080, 8082
         towall.vm.provision :chef_solo do |chef|
