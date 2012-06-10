@@ -13,7 +13,7 @@ class ReceiveLabelList
     password = job[:password]
     Gmail.new(user, password) do |gmail|
       gmail.labels.each do |label|
-        labels << label
+        labels << label.force_encoding('utf-8')
       end
     end
     labels
